@@ -1,0 +1,64 @@
+{
+  "name": "ruc-portal",
+  "version": "1.0.0",
+  "description": "Desktop wrapper for RUC Portal",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never"
+  },
+  "keywords": [
+    "RUC",
+    "education",
+    "RUC Portal"
+  ],
+  "author": "RUC Portal Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {
+    "axios": "^1.12.2",
+    "electron-store": "^8.1.0"
+  },
+  "build": {
+    "appId": "kg.edu.ruc.learn",
+    "productName": "RUC Portal",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "intranetMapping.js",
+      "proxyServer.js",
+      "renderer/**/*",
+      "node_modules/**/*"
+    ],
+    "icon": "assets/icon.png",
+    "mac": {
+      "category": "public.app-category.education",
+      "target": "dmg",
+      "artifactName": "${productName}-${version}-macOS-${arch}.${ext}"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "RUC Portal",
+    "perMachine": false,
+    "installerIcon": "assets/icon.png",
+    "uninstallerIcon": "assets/icon.png",
+    "installerHeaderIcon": "assets/icon.png",
+    "deleteAppDataOnUninstall": true,
+    "artifactName": "${productName}-Setup-${version}-Windows-${arch}.${ext}"
+  }
+}
